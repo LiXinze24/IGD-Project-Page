@@ -24,7 +24,7 @@
   <script src="./static/js/index.js"></script>
 
   <style>
-    /* 1. 全局背景优化：添加淡淡的工程网格纹理 */
+    /* 全局背景：淡淡的工程网格纹理 */
     body {
       background-image: 
         linear-gradient(#f1f1f1 1px, transparent 1px),
@@ -33,22 +33,22 @@
       background-attachment: fixed;
     }
 
-    /* 2. Hero 区域：添加蓝色-紫色的科技感渐变 */
+    /* Hero 区域：科技感线性渐变 */
     .hero.is-light {
       background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
       border-bottom: 1px solid #e0e0e0;
     }
 
-    /* 3. 分块背景 (Zebra Striping)：增强视觉引导 */
+    /* 章节分块背景：奇偶交替 */
     section.section:nth-of-type(even) {
-      background-color: rgba(255, 255, 255, 0.8); /* 半透明白 */
+      background-color: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(5px);
     }
     section.section:nth-of-type(odd) {
-      background-color: rgba(248, 249, 250, 0.7); /* 更浅的颜色 */
+      background-color: rgba(248, 249, 250, 0.7);
     }
 
-    /* 4. 标题装饰 */
+    /* 标题装饰线 */
     .title.is-3 {
       margin-bottom: 2rem;
       position: relative;
@@ -66,16 +66,22 @@
       border-radius: 2px;
     }
 
-    /* 5. 按钮悬停动画 */
+    /* 按钮悬停动效 */
     .external-link:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       transition: all 0.2s;
     }
 
     .publication-title {
       font-weight: 800;
       color: #1d1d1f;
+      line-height: 1.2;
+    }
+
+    .author-block {
+      display: inline-block;
+      margin-right: 5px;
     }
   </style>
 </head>
@@ -88,19 +94,38 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">IGD: A Unified Generative Framework for Semantic-Driven Mechanical Design</h1>
           
-          <div class="is-size-5 publication-authors">
+          <div class="is-size-5 publication-authors" style="margin-bottom: 10px;">
             <span class="author-block">Yan Shi<sup>1,+</sup>,</span>
             <span class="author-block">Fangwei Ning<sup>1,+,*</sup>,</span>
             <span class="author-block">Jiaxing Lu<sup>1,+</sup>,</span>
             <span class="author-block">Xinze Li<sup>1,+</sup>,</span>
+            <span class="author-block">Xu Xu<sup>1</sup>,</span>
+            <span class="author-block">Yishu Cai<sup>2,+</sup>,</span>
+            <span class="author-block">Liman Yang<sup>1</sup>,</span>
+            <span class="author-block">Zhibo Sun<sup>3</sup>,</span>
+            <span class="author-block">Shaofeng Xu<sup>4</sup>,</span>
+            <span class="author-block">Lei Li<sup>1</sup>,</span>
+            <br>
+            <span class="author-block">Yanxia Niu<sup>3</sup>,</span>
+            <span class="author-block">Jiarui Shang<sup>1</sup>,</span>
+            <span class="author-block">Yangyong Wu<sup>1</sup>,</span>
+            <span class="author-block">Luhao Wang<sup>1</sup>,</span>
+            <span class="author-block">Yushan Ma<sup>4</sup>,</span>
+            <span class="author-block">Maolin Cai<sup>1</sup>,</span>
             <span class="author-block">Shaohua Yang<sup>5,*</sup>,</span>
             <span class="author-block">Yixuan Wang<sup>5,*</sup></span>
-            </div>
+          </div>
 
-          <div class="is-size-6 publication-authors" style="margin-top: 10px;">
-            <span class="author-block"><sup>1</sup>Beihang University, <sup>2</sup>University of Birmingham, <sup>5</sup>School of Mechanical Engineering, BUAA</span>
-            <br>
-            <span class="author-block"><sup>*</sup>Corresponding authors, <sup>+</sup>Equal contribution</span>
+          <div class="is-size-6 publication-authors" style="color: #5a5a5a; margin-bottom: 20px;">
+            <span class="author-block"><sup>1</sup>Beihang University, Beijing, China</span> | 
+            <span class="author-block"><sup>2</sup>University of Birmingham, UK</span> | 
+            <span class="author-block"><sup>3</sup>Beihang School, Beijing, China</span><br>
+            <span class="author-block"><sup>4</sup>Liupanshan Laboratory, China</span> | 
+            <span class="author-block"><sup>5</sup>School of Mechanical Engineering, Beihang University</span><br>
+            <span class="author-block" style="font-style: italic; margin-top: 10px; display: block;">
+              <sup>*</sup>Corresponding authors: ningfw@buaa.edu.cn, yangsh@buaa.edu.cn, wangyixuan@buaa.edu.cn
+            </span>
+            <span class="author-block" style="font-style: italic;"><sup>+</sup>These authors contributed equally to this work</span>
           </div>
 
           <div class="column has-text-centered">
@@ -134,9 +159,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./static/images/overview.png" alt="IGD Framework Overview" style="width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-      <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
-        <strong>IGD Architecture</strong>: Integrating LLMs and task-specific agents (ACBAC) for automated mechanical modeling and assembly.
+      <img src="./static/images/overview.png" alt="IGD Overview" style="width: 100%; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);">
+      <h2 class="subtitle has-text-centered" style="margin-top: 20px; font-size: 1.1rem;">
+        <strong>IGD Framework</strong>: A unified generative paradigm for end-to-end mechanical design, driven by semantic intent and historical engineering knowledge.
       </h2>
     </div>
   </div>
@@ -149,10 +174,10 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Mechanical design integrates domain knowledge, analytical reasoning, and geometric modeling... (此处省略，建议粘贴论文文本)
+            Mechanical design integrates domain knowledge, analytical reasoning, and geometric modeling to transform functional requirements into feasible structures. Achieving this process in a truly end-to-end manner remains challenging...
           </p>
           <p>
-            We demonstrate that the proposed IGD framework effectively integrates general LLMs and task-specific neural networks within a multi-agent architecture to perform intent-driven design tasks.
+            We present <strong>IGD</strong>, an intelligent generative design framework that integrates large language models (LLMs) and task-specific neural networks (TNNs) within a multi-agent architecture. Our framework demonstrates high geometric and assembly accuracy across complex mechanical tasks like reducer design and device optimization.
           </p>
         </div>
       </div>
@@ -162,27 +187,21 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Methodology</h2>
-        
-        <div class="columns is-centered">
-          <div class="column">
-            <h3 class="title is-4">Iterative 3D Modeling</h3>
-            <div class="content has-text-justified">
-              <p>Utilizing Content-Retrieval Prompting (CRP) and Content-Generation Prompting (CGP) to bridge text commands and CADQuery code.</p>
-            </div>
-            <img src="./static/images/modeling.png" alt="Modeling" style="border-radius: 8px;">
-          </div>
-          
-          <div class="column">
-            <h3 class="title is-4">Graph-Based Assembly</h3>
-            <div class="content has-text-justified">
-              <p>The GART method enables precise mating of parts by retrieving assembly subgraphs and reasoning through constraints.</p>
-            </div>
-            <img src="./static/images/assembly.png" alt="Assembly" style="border-radius: 8px;">
-          </div>
+    <h2 class="title is-3 has-text-centered">Methodology</h2>
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h3 class="title is-4">Iterative 3D Modeling</h3>
+        <div class="content has-text-justified">
+          <p>Introducing <strong>CRP (Content-Retrieval Prompting)</strong> and <strong>CGP (Content-Generation Prompting)</strong> to ensure structural consistency and manufacturing feasibility.</p>
         </div>
+        <img src="./static/images/modeling.png" alt="3D Modeling" style="border-radius: 8px; border: 1px solid #eee;">
+      </div>
+      <div class="column is-half">
+        <h3 class="title is-4">Graph-Based Assembly</h3>
+        <div class="content has-text-justified">
+          <p>The <strong>GART</strong> method retrieves assembly subgraphs to reason about kinematic constraints and spatial transformations.</p>
+        </div>
+        <img src="./static/images/assembly.png" alt="3D Assembly" style="border-radius: 8px; border: 1px solid #eee;">
       </div>
     </div>
   </div>
@@ -191,14 +210,14 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Design Results</h2>
-    <div class="columns is-centered">
-      <div class="column has-text-centered">
-        <img src="./static/images/reducer.png" alt="Reducer Design" style="width: 80%;">
-        <p><strong>First-stage Reducer Design</strong></p>
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <img src="./static/images/reducer.png" alt="Reducer Result" style="width: 100%; max-width: 450px;">
+        <p class="is-italic mt-2">First-stage cylindrical gear reducer</p>
       </div>
-      <div class="column has-text-centered">
-        <img src="./static/images/optimization.png" alt="Optimization" style="width: 80%;">
-        <p><strong>Landing Gear Optimization</strong></p>
+      <div class="column">
+        <img src="./static/images/optimization.png" alt="Optimization Result" style="width: 100%; max-width: 450px;">
+        <p class="is-italic mt-2">Landing gear mechanism optimization</p>
       </div>
     </div>
   </div>
@@ -207,9 +226,9 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{Shi2025IGD,
+    <pre style="background: #f5f5f5; padding: 20px; border-radius: 10px;"><code>@article{Shi2025IGD,
   title={IGD: A Unified Generative Framework for Semantic-Driven Mechanical Design},
-  author={Shi, Yan and Ning, Fangwei and Lu, Jiaxing and others},
+  author={Shi, Yan and Ning, Fangwei and Lu, Jiaxing and Li, Xinze and Xu, Xu and Cai, Yishu and Yang, Liman and Sun, Zhibo and Xu, Shaofeng and Li, Lei and others},
   journal={arXiv preprint},
   year={2025}
 }</code></pre>
@@ -219,7 +238,7 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <p>Page template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.</p>
+      <p>Page template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. Background grid inspired by engineering design.</p>
     </div>
   </div>
 </footer>
