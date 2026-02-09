@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IGD: A Unified Generative Framework for Semantic-Driven Mechanical Design</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans |Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css ">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
@@ -84,76 +84,15 @@
       margin-right: 5px;
     }
 
-    /* PDF 容器样式 */
-    .pdf-container {
-      position: relative;
-      width: 100%;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-      overflow: hidden;
-      margin-bottom: 20px;
+    /* 补充材料卡片的样式 */
+    .pdf-card {
+      transition: all 0.3s ease;
+      border: 1px solid #eee;
     }
-
-    .pdf-viewer {
-      width: 100%;
-      height: 700px;
-      border: none;
-      display: block;
-    }
-
-    /* PDF 标签页样式 */
-    .pdf-tabs {
-      display: flex;
-      background: #f8f9fa;
-      border-bottom: 2px solid #e0e0e0;
-      overflow-x: auto;
-      flex-wrap: wrap;
-    }
-
-    .pdf-tab {
-      padding: 12px 20px;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      border-bottom: 3px solid transparent;
-      font-weight: 500;
-      color: #666;
-      transition: all 0.3s;
-      white-space: nowrap;
-    }
-
-    .pdf-tab:hover {
-      color: #3273dc;
-      background: rgba(50, 115, 220, 0.05);
-    }
-
-    .pdf-tab.active {
-      color: #3273dc;
-      border-bottom-color: #3273dc;
-      background: #fff;
-    }
-
-    .pdf-download-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 10;
-      background: rgba(255,255,255,0.95);
-      border-radius: 6px;
-      padding: 8px 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    /* 响应式调整 */
-    @media (max-width: 768px) {
-      .pdf-viewer {
-        height: 500px;
-      }
-      .pdf-tab {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-      }
+    .pdf-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      border-color: #3273dc;
     }
   </style>
 </head>
@@ -203,13 +142,13 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="./static/pdfs/Overall+Architecture+of+IGD.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <a href="./pdf/More+results+based+on+IGD+design.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/LiXinze24/Bee-MAS" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://github.com/LiXinze24/Bee-MAS " target="_blank" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
@@ -228,45 +167,10 @@
   </div>
 </section>
 
-<!-- PDF 展示区域 -->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <h2 class="title is-4 has-text-centered" style="margin-bottom: 20px;">Technical Documents</h2>
-      
-      <div class="pdf-container">
-        <!-- 下载按钮 -->
-        <div class="pdf-download-btn">
-          <a id="current-pdf-download" href="./static/pdfs/Overall+Architecture+of+IGD.pdf" download class="button is-small is-info is-outlined">
-            <span class="icon"><i class="fas fa-download"></i></span>
-            <span>Download</span>
-          </a>
-        </div>
-
-        <!-- PDF 标签页 -->
-        <div class="pdf-tabs">
-          <button class="pdf-tab active" onclick="switchPDF('Overall+Architecture+of+IGD.pdf', this)">
-            <i class="fas fa-sitemap" style="margin-right: 5px;"></i>Overall Architecture
-          </button>
-          <button class="pdf-tab" onclick="switchPDF('3D+modeling+result.pdf', this)">
-            <i class="fas fa-cube" style="margin-right: 5px;"></i>3D Modeling Results
-          </button>
-          <button class="pdf-tab" onclick="switchPDF('Semantic-Driven+IGD+Optimization+Design+Results.pdf', this)">
-            <i class="fas fa-chart-line" style="margin-right: 5px;"></i>Optimization Results
-          </button>
-          <button class="pdf-tab" onclick="switchPDF('More+results+based+on+IGD+design.pdf', this)">
-            <i class="fas fa-folder-open" style="margin-right: 5px;"></i>More Results
-          </button>
-        </div>
-
-        <!-- PDF 查看器 -->
-        <iframe id="pdf-viewer" class="pdf-viewer" src="./static/pdfs/Overall+Architecture+of+IGD.pdf" type="application/pdf">
-          <p>Your browser does not support PDFs. Please download the PDF to view it: 
-            <a href="./static/pdfs/Overall+Architecture+of+IGD.pdf">Download PDF</a>.
-          </p>
-        </iframe>
-      </div>
-
+      <img src="./static/images/overview.png" alt="IGD Overview" style="width: 100%; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);">
       <h2 class="subtitle has-text-centered" style="margin-top: 20px; font-size: 1.1rem;">
         <strong>IGD Framework</strong>: A unified generative paradigm for end-to-end mechanical design, driven by semantic intent and historical engineering knowledge.
       </h2>
@@ -301,18 +205,14 @@
         <div class="content has-text-justified">
           <p>Introducing <strong>CRP (Content-Retrieval Prompting)</strong> and <strong>CGP (Content-Generation Prompting)</strong> to ensure structural consistency and manufacturing feasibility.</p>
         </div>
-        <div class="pdf-container" style="height: 400px;">
-          <iframe src="./static/pdfs/3D+modeling+result.pdf" class="pdf-viewer" style="height: 400px;"></iframe>
-        </div>
+        <img src="./static/images/modeling.png" alt="3D Modeling" style="border-radius: 8px; border: 1px solid #eee;">
       </div>
       <div class="column is-half">
-        <h3 class="title is-4">Optimization Design</h3>
+        <h3 class="title is-4">Graph-Based Assembly</h3>
         <div class="content has-text-justified">
-          <p>The <strong>Semantic-Driven IGD</strong> method retrieves design patterns to reason about kinematic constraints and spatial transformations for optimal mechanical structures.</p>
+          <p>The <strong>GART</strong> method retrieves assembly subgraphs to reason about kinematic constraints and spatial transformations.</p>
         </div>
-        <div class="pdf-container" style="height: 400px;">
-          <iframe src="./static/pdfs/Semantic-Driven+IGD+Optimization+Design+Results.pdf" class="pdf-viewer" style="height: 400px;"></iframe>
-        </div>
+        <img src="./static/images/assembly.png" alt="3D Assembly" style="border-radius: 8px; border: 1px solid #eee;">
       </div>
     </div>
   </div>
@@ -320,17 +220,144 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Additional Design Results</h2>
+    <h2 class="title is-3 has-text-centered">Design Results</h2>
     <div class="columns is-centered has-text-centered">
-      <div class="column is-10">
-        <div class="pdf-container">
-          <iframe src="./static/pdfs/More+results+based+on+IGD+design.pdf" class="pdf-viewer" style="height: 600px;"></iframe>
-        </div>
-        <p class="is-italic mt-3">Comprehensive results demonstrating IGD's capabilities in various mechanical design scenarios</p>
+      <div class="column">
+        <img src="./static/images/reducer.png" alt="Reducer Result" style="width: 100%; max-width: 450px;">
+        <p class="is-italic mt-2">First-stage cylindrical gear reducer</p>
+      </div>
+      <div class="column">
+        <img src="./static/images/optimization.png" alt="Optimization Result" style="width: 100%; max-width: 450px;">
+        <p class="is-italic mt-2">Landing gear mechanism optimization</p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- === NEW SECTION ADDED: Supplementary Materials === -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Supplementary Materials</h2>
+    <div class="content has-text-centered" style="margin-bottom: 2rem;">
+      <p>Download the detailed PDFs below for comprehensive results, architectural details, and optimization analysis.</p>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full">
+        
+        <!-- PDF 1 -->
+        <div class="card pdf-card" style="margin-bottom: 1rem;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-left">
+                <div class="level-item">
+                  <span class="icon is-medium has-text-danger">
+                    <i class="fas fa-file-pdf fa-2x"></i>
+                  </span>
+                  <div class="ml-3">
+                    <p class="title is-5">Overall Architecture of IGD</p>
+                    <p class="subtitle is-6 has-text-grey">Detailed system breakdown and framework diagram.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="level-right">
+                <div class="level-item">
+                  <a href="./pdf/Overall+Architecture+of+IGD.pdf" target="_blank" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-download"></i></span>
+                    <span>Download</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PDF 2 -->
+        <div class="card pdf-card" style="margin-bottom: 1rem;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-left">
+                <div class="level-item">
+                  <span class="icon is-medium has-text-danger">
+                    <i class="fas fa-file-pdf fa-2x"></i>
+                  </span>
+                  <div class="ml-3">
+                    <p class="title is-5">3D Modeling Result</p>
+                    <p class="subtitle is-6 has-text-grey">Specific results for the iterative 3D modeling process.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="level-right">
+                <div class="level-item">
+                  <a href="./pdf/3D+modeling+result.pdf" target="_blank" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-download"></i></span>
+                    <span>Download</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PDF 3 -->
+        <div class="card pdf-card" style="margin-bottom: 1rem;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-left">
+                <div class="level-item">
+                  <span class="icon is-medium has-text-danger">
+                    <i class="fas fa-file-pdf fa-2x"></i>
+                  </span>
+                  <div class="ml-3">
+                    <p class="title is-5">Semantic-Driven IGD Optimization</p>
+                    <p class="subtitle is-6 has-text-grey">In-depth analysis of optimization design results.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="level-right">
+                <div class="level-item">
+                  <a href="./pdf/Semantic-Driven+IGD+Optimization+Design+Results.pdf" target="_blank" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-download"></i></span>
+                    <span>Download</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PDF 4 -->
+        <div class="card pdf-card" style="margin-bottom: 1rem;">
+          <div class="card-content">
+            <div class="level is-mobile">
+              <div class="level-left">
+                <div class="level-item">
+                  <span class="icon is-medium has-text-danger">
+                    <i class="fas fa-file-pdf fa-2x"></i>
+                  </span>
+                  <div class="ml-3">
+                    <p class="title is-5">More Results Based on IGD Design</p>
+                    <p class="subtitle is-6 has-text-grey">Additional experiments and case studies.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="level-right">
+                <div class="level-item">
+                  <a href="./pdf/More+results+based+on+IGD+design.pdf" target="_blank" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-download"></i></span>
+                    <span>Download</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- === END NEW SECTION === -->
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -347,42 +374,10 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <p>Page template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. Background grid inspired by engineering design.</p>
+      <p>Page template adapted from <a href="https://github.com/nerfies/nerfies.github.io ">Nerfies</a>. Background grid inspired by engineering design.</p>
     </div>
   </div>
 </footer>
-
-<script>
-  // PDF 切换功能
-  function switchPDF(filename, tabElement) {
-    // 更新 iframe 源
-    const viewer = document.getElementById('pdf-viewer');
-    viewer.src = './static/pdfs/' + filename;
-    
-    // 更新下载链接
-    const downloadLink = document.getElementById('current-pdf-download');
-    downloadLink.href = './static/pdfs/' + filename;
-    
-    // 更新标签页样式
-    const tabs = document.querySelectorAll('.pdf-tab');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    tabElement.classList.add('active');
-  }
-
-  // 响应式高度调整
-  function adjustPDFHeight() {
-    const viewers = document.querySelectorAll('.pdf-viewer');
-    const isMobile = window.innerWidth <= 768;
-    viewers.forEach(viewer => {
-      if (!viewer.style.height || viewer.style.height === '') {
-        viewer.style.height = isMobile ? '500px' : '700px';
-      }
-    });
-  }
-
-  window.addEventListener('resize', adjustPDFHeight);
-  document.addEventListener('DOMContentLoaded', adjustPDFHeight);
-</script>
 
 </body>
 </html>
